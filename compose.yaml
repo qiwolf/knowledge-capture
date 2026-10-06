@@ -1,0 +1,23 @@
+services:
+  knowledge:
+    build: .
+    image: albatrosswang/knowledge-capture:0.2.0-alpha.1
+    restart: unless-stopped
+    init: true
+    environment:
+      KNOWLEDGE_PUBLIC_PORT: "${KNOWLEDGE_PUBLIC_PORT:-8765}"
+    ports:
+      - "127.0.0.1:${KNOWLEDGE_PUBLIC_PORT:-8765}:8765"
+    volumes:
+      - knowledge-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=256m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    stop_grace_period: 2m
+
+volumes:
+  knowledge-data:

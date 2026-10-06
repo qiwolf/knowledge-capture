@@ -1,0 +1,79 @@
+{
+  "services": {
+    "my_search_api": {
+      "transport": "http_json",
+      "endpoint": "https://search.example.com/search",
+      "method": "GET",
+      "token_env": "KC_MY_SEARCH_TOKEN"
+    },
+    "my_wechat_reader": {
+      "transport": "mcp",
+      "endpoint": "https://reader.example.com/mcp",
+      "mcp_tool": "read_article",
+      "token_env": "KC_MY_READER_TOKEN",
+      "response_format": "text"
+    },
+    "my_video_reader": {
+      "transport": "http_json",
+      "endpoint": "https://video-reader.example.com/transcribe",
+      "method": "POST",
+      "token_env": "KC_MY_VIDEO_TOKEN"
+    }
+  },
+  "capabilities": {
+    "search": {
+      "service": "my_search_api",
+      "input_fields": {
+        "query": "q",
+        "limit": "count"
+      },
+      "output_fields": {
+        "results": "results",
+        "title": "title",
+        "url": "url",
+        "description": "snippet"
+      }
+    },
+    "wechat_reader": {
+      "service": "my_wechat_reader",
+      "input_fields": {
+        "url": "url"
+      },
+      "output_fields": {
+        "markdown": "text"
+      }
+    },
+    "video_reader": {
+      "kind": "video",
+      "service": "my_video_reader",
+      "input_fields": {
+        "url": "url"
+      },
+      "output_fields": {
+        "title": "title",
+        "status": "status",
+        "segments": "segments",
+        "frames": "frames",
+        "duration": "duration",
+        "transcript_kind": "transcript_kind"
+      }
+    }
+  },
+  "routing": {
+    "capture": [
+      {
+        "hosts": [
+          "mp.weixin.qq.com"
+        ],
+        "reader": "wechat_reader"
+      },
+      {
+        "hosts": [
+          "video.example.com"
+        ],
+        "reader": "video_reader"
+      }
+    ],
+    "default_reader": "builtin"
+  }
+}

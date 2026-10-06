@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "knowledge-capture"
+version = "0.2.0-alpha.1"
+description = "个人知识采集系统：可溯源 Markdown 采集底座"
+requires-python = ">=3.11"
+dependencies = ["requests>=2.32,<3", "trafilatura>=2,<3", "mcp>=1.26,<2"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+knowledge-capture = "knowledge_capture.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["knowledge_capture*"]
+
+[tool.setuptools.package-data]
+knowledge_capture = ["web/*.html", "web/*.css", "web/*.js"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

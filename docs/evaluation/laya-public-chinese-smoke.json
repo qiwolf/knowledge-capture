@@ -1,0 +1,219 @@
+{
+  "scope": "只读调用；6条人工构造的公开主题短样例；不含私密资料，不代表代表性业务回归或生产质量验收",
+  "endpoint": "http://<内网分类服务>:8081/v1/systemone",
+  "model": "multilingual",
+  "protocol_source": "https://github.com/NandhaKishorM/laya/blob/main/docs/http-api.md",
+  "cases": [
+    {
+      "id": "it",
+      "state": "路由器升级前，请核对当前固件版本，导出配置备份，并验证升级失败后的回滚流程。",
+      "expected": "it_operations",
+      "http_status": 200,
+      "elapsed_ms": 959.0,
+      "response": {
+        "model": "laya-multilingual",
+        "family": "multilingual",
+        "route": "model multilingual",
+        "answers": {
+          "topic": {
+            "type": "choice",
+            "action": {
+              "act_probability": 1
+            },
+            "confidence": 0.1235,
+            "choice": "access_block",
+            "probabilities": {
+              "it_operations": 0.2156,
+              "ltci": 0.1049,
+              "hospital_procurement": 0.0334,
+              "access_block": 0.3333,
+              "other": 0.3128
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 130,
+          "output_tokens": 0,
+          "latency_ms": 944.691
+        }
+      }
+    },
+    {
+      "id": "ltci",
+      "state": "这篇文章介绍长期护理保险经办流程，讨论失能评估、护理服务申请材料和定点护理机构管理。",
+      "expected": "ltci",
+      "http_status": 200,
+      "elapsed_ms": 51.6,
+      "response": {
+        "model": "laya-multilingual",
+        "family": "multilingual",
+        "route": "model multilingual",
+        "answers": {
+          "topic": {
+            "type": "choice",
+            "action": {
+              "act_probability": 1
+            },
+            "confidence": 0.9736,
+            "choice": "ltci",
+            "probabilities": {
+              "it_operations": 0.0009,
+              "ltci": 0.9943,
+              "hospital_procurement": 0.001,
+              "access_block": 0.0012,
+              "other": 0.0027
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 129,
+          "output_tokens": 0,
+          "latency_ms": 38.8744
+        }
+      }
+    },
+    {
+      "id": "hospital",
+      "state": "医院拟采购信息系统运维服务，要求提供服务人员安排、响应时限、故障报告和可验证的验收记录。",
+      "expected": "hospital_procurement",
+      "http_status": 200,
+      "elapsed_ms": 53.4,
+      "response": {
+        "model": "laya-multilingual",
+        "family": "multilingual",
+        "route": "model multilingual",
+        "answers": {
+          "topic": {
+            "type": "choice",
+            "action": {
+              "act_probability": 1
+            },
+            "confidence": 0.8686,
+            "choice": "hospital_procurement",
+            "probabilities": {
+              "it_operations": 0.0061,
+              "ltci": 0.0072,
+              "hospital_procurement": 0.962,
+              "access_block": 0.0086,
+              "other": 0.0161
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 132,
+          "output_tokens": 0,
+          "latency_ms": 39.633
+        }
+      }
+    },
+    {
+      "id": "other",
+      "state": "家常番茄炒蛋的做法是先炒鸡蛋，再炒番茄，最后混合调味。",
+      "expected": "other",
+      "http_status": 200,
+      "elapsed_ms": 53.2,
+      "response": {
+        "model": "laya-multilingual",
+        "family": "multilingual",
+        "route": "model multilingual",
+        "answers": {
+          "topic": {
+            "type": "choice",
+            "action": {
+              "act_probability": 1
+            },
+            "confidence": 0.7896,
+            "choice": "other",
+            "probabilities": {
+              "it_operations": 0.009,
+              "ltci": 0.0033,
+              "hospital_procurement": 0.0024,
+              "access_block": 0.0685,
+              "other": 0.9169
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 123,
+          "output_tokens": 0,
+          "latency_ms": 40.6985
+        }
+      }
+    },
+    {
+      "id": "blocked",
+      "state": "访问受限。请完成验证码验证后继续访问页面，当前未返回文章正文。",
+      "expected": "access_block",
+      "http_status": 200,
+      "elapsed_ms": 51.1,
+      "response": {
+        "model": "laya-multilingual",
+        "family": "multilingual",
+        "route": "model multilingual",
+        "answers": {
+          "topic": {
+            "type": "choice",
+            "action": {
+              "act_probability": 1
+            },
+            "confidence": 0.925,
+            "choice": "access_block",
+            "probabilities": {
+              "it_operations": 0.0125,
+              "ltci": 0.0022,
+              "hospital_procurement": 0.0023,
+              "access_block": 0.9798,
+              "other": 0.0032
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 123,
+          "output_tokens": 0,
+          "latency_ms": 35.3591
+        }
+      }
+    },
+    {
+      "id": "mixed",
+      "state": "医院机房管理员准备升级路由器固件，先备份配置，再演练网络故障回滚。本段主要讨论网络运维技术。",
+      "expected": "it_operations",
+      "http_status": 200,
+      "elapsed_ms": 50.9,
+      "response": {
+        "model": "laya-multilingual",
+        "family": "multilingual",
+        "route": "model multilingual",
+        "answers": {
+          "topic": {
+            "type": "choice",
+            "action": {
+              "act_probability": 1
+            },
+            "confidence": 0.6762,
+            "choice": "it_operations",
+            "probabilities": {
+              "it_operations": 0.8738,
+              "ltci": 0.0208,
+              "hospital_procurement": 0.0041,
+              "access_block": 0.0401,
+              "other": 0.0612
+            }
+          }
+        },
+        "usage": {
+          "input_tokens": 135,
+          "output_tokens": 0,
+          "latency_ms": 36.7621
+        }
+      }
+    }
+  ],
+  "summary": {
+    "case_count": 6,
+    "correct": 5,
+    "accuracy": 0.8333333333333334,
+    "production_acceptance": false,
+    "shadow_enabled": false
+  }
+}

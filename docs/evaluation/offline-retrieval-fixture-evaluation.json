@@ -1,0 +1,30 @@
+{
+  "scope": "离线检索链路回归；手工固定向量，不代表生产嵌入或重排模型质量",
+  "dataset": "tests/workbench_ui_fixture.py 中4篇中文路由器维护演示材料",
+  "queries": [
+    {
+      "query": "确认当前固件",
+      "relevant_suffix": "1"
+    },
+    {
+      "query": "保存设置副本",
+      "relevant_suffix": "2"
+    },
+    {
+      "query": "插件能否运行",
+      "relevant_suffix": "3"
+    },
+    {
+      "query": "恢复旧系统",
+      "relevant_suffix": "4"
+    }
+  ],
+  "k": 2,
+  "metrics": {
+    "Hit@2": 1.0,
+    "Recall@2": 1.0,
+    "MRR@2": 1.0
+  },
+  "test": "tests/test_retrieval.py::test_existing_chinese_fixture_offline_metrics",
+  "real_model_called": false
+}

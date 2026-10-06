@@ -1,0 +1,5 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>知识采集服务设置</title><link rel="stylesheet" href="ui.css"></head><body><main><h1>连接个人采集服务</h1>
+<p>填写已启动的服务地址与访问令牌。保存时，浏览器会请求访问这个服务地址的权限。</p>
+<form id="settings-form"><label for="endpoint">服务地址</label><input id="endpoint" type="url" required aria-describedby="endpoint-help status" placeholder="http://127.0.0.1:8765"><p class="hint" id="endpoint-help">本机默认使用 8765 端口；远程服务使用 HTTPS。不填写路径。</p>
+<label for="token">访问令牌</label><input id="token" type="password" required autocomplete="off" spellcheck="false" aria-describedby="token-help status"><p class="hint" id="token-help">仅保存在此浏览器本机，不进行浏览器账号同步。</p>
+<button class="primary" type="submit">保存并授权连接</button></form><p id="status" class="status" role="status" aria-live="polite">尚未验证服务连接。</p></main><script type="module" src="options.js"></script></body></html>

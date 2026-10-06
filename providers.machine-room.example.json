@@ -1,0 +1,90 @@
+{
+  "services": {
+    "firecrawl_search": {
+      "transport": "http_json",
+      "endpoint": "https://firecrawl.example.org/v2/search",
+      "method": "POST",
+      "timeout_seconds": 90
+    },
+    "firecrawl_reader": {
+      "transport": "http_json",
+      "endpoint": "https://firecrawl.example.org/v2/scrape",
+      "method": "POST",
+      "timeout_seconds": 120
+    },
+    "crawl4ai_reader": {
+      "transport": "mcp",
+      "endpoint": "https://reader.example.org/mcp",
+      "mcp_tool": "crawl_page",
+      "token_env": "KC_CRAWL4AI_TOKEN",
+      "timeout_seconds": 120
+    }
+  },
+  "capabilities": {
+    "search": {
+      "service": "firecrawl_search",
+      "success_path": "success",
+      "input_fields": {
+        "query": "query",
+        "limit": "limit"
+      },
+      "output_fields": {
+        "results": "data.web",
+        "title": "title",
+        "url": "url",
+        "description": "description"
+      },
+      "constants": {
+        "sources": [
+          "web"
+        ]
+      }
+    },
+    "firecrawl_reader": {
+      "service": "firecrawl_reader",
+      "success_path": "success",
+      "constants": {
+        "formats": [
+          "markdown"
+        ],
+        "onlyMainContent": true
+      },
+      "input_fields": {
+        "url": "url"
+      },
+      "output_fields": {
+        "markdown": "data.markdown",
+        "title": "data.metadata.title",
+        "final_url": "data.metadata.url"
+      }
+    },
+    "crawl4ai_reader": {
+      "service": "crawl4ai_reader",
+      "success_path": "success",
+      "truncated_path": "truncated",
+      "constants": {
+        "max_chars": 60000,
+        "timeout_ms": 60000
+      },
+      "input_fields": {
+        "url": "url"
+      },
+      "output_fields": {
+        "markdown": "markdown",
+        "title": "title",
+        "final_url": "url"
+      }
+    }
+  },
+  "routing": {
+    "capture": [
+      {
+        "hosts": [
+          "mp.weixin.qq.com"
+        ],
+        "reader": "crawl4ai_reader"
+      }
+    ],
+    "default_reader": "builtin"
+  }
+}

@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+data/
+exports/
+.env
+providers.local.json
+
+# Local state, generated distributions, and synced read-only references
+.DS_Store
+*.py[cod]
+build/
+dist/
+sources/
+.env.*
+!.env.example
+*.local.json
