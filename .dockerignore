@@ -1,5 +1,6 @@
 **
 !Dockerfile
+!LICENSE
 !pyproject.toml
 !requirements.lock.txt
 !knowledge_capture/
