@@ -1,8 +1,8 @@
 # knowledge-capture · 知识采集系统
 
-**版本：0.2.0-alpha.1（发布候选；尚未声明完成公开发布）。**
+**版本：0.2.0-alpha.1（Alpha 预发布）。**
 
-目标源码仓库：`qiwolf/knowledge-capture`；目标镜像：`albatrosswang/knowledge-capture:0.2.0-alpha.1`。当前 Compose 从本地源码构建，不依赖远端镜像已经存在。
+源码仓库：[qiwolf/knowledge-capture](https://github.com/qiwolf/knowledge-capture)；镜像：`albatrosswang/knowledge-capture:0.2.0-alpha.1`。当前 Compose 从本地源码构建，不依赖远端镜像已经存在。
 
 把网页链接变成可追溯、可修订的 Markdown 知识库，供人、Obsidian 和 AI Agent 共同使用。
 
@@ -128,4 +128,4 @@ npm --prefix extension test
 
 ## 代码许可
 
-本发布候选尚未选择开源许可，未授予额外使用许可。依赖组件遵循各自许可。
+本项目采用 [MIT 许可](LICENSE)。依赖组件遵循各自许可。

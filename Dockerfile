@@ -6,8 +6,12 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     KNOWLEDGE_DATA=/data \
     HOME=/tmp
 
+LABEL org.opencontainers.image.source="https://github.com/qiwolf/knowledge-capture" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.version="0.2.0-alpha.1"
+
 WORKDIR /app
-COPY requirements.lock.txt pyproject.toml ./
+COPY requirements.lock.txt pyproject.toml LICENSE ./
 RUN pip install --no-cache-dir -r requirements.lock.txt
 COPY knowledge_capture ./knowledge_capture
 RUN pip install --no-cache-dir --no-deps . \

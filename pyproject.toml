@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "knowledge-capture"
 version = "0.2.0-alpha.1"
 description = "个人知识采集系统：可溯源 Markdown 采集底座"
+license = {file = "LICENSE"}
 requires-python = ">=3.11"
 dependencies = ["requests>=2.32,<3", "trafilatura>=2,<3", "mcp>=1.26,<2"]
 
