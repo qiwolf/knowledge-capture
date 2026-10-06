@@ -2,7 +2,7 @@
 
 **版本：0.2.0-alpha.1（Alpha 预发布）。**
 
-源码仓库：[qiwolf/knowledge-capture](https://github.com/qiwolf/knowledge-capture)；镜像：`albatrosswang/knowledge-capture:0.2.0-alpha.1`。当前 Compose 从本地源码构建，不依赖远端镜像已经存在。
+源码仓库：[qiwolf/knowledge-capture](https://github.com/qiwolf/knowledge-capture)；镜像：`albatrosswang/knowledge-capture:0.2.0-alpha.1`。镜像支持 Linux AMD64 和 ARM64。
 
 把网页链接变成可追溯、可修订的 Markdown 知识库，供人、Obsidian 和 AI Agent 共同使用。
 
@@ -21,8 +21,11 @@
 安装 Docker 并启动后，在源码目录执行：
 
 ```sh
-docker compose up -d --build
+docker compose pull
+docker compose up -d --no-build
 ```
+
+需要从源码构建时，使用 `docker compose up -d --build`。
 
 打开 [本机工作台](http://127.0.0.1:8765)。首次连接时，读取本机私有令牌并粘贴到工作台：
 
@@ -32,7 +35,7 @@ docker compose exec knowledge cat /data/.api-token
 
 数据保存在独立命名卷，重建容器不删除知识。默认只允许宿主机本机访问；容器非 root 运行。停止、升级、备份与网络边界见 [容器部署](docs/容器部署与发布.md)。不要执行带 `-v` 的删除命令，除非明确要删除数据卷。
 
-如本机 8765 已被占用，可执行 `KNOWLEDGE_PUBLIC_PORT=18765 docker compose up -d --build`，随后访问 `http://127.0.0.1:18765`。该变量同时配置端口映射和 Host 校验，不会开放其他主机名。
+如本机 8765 已被占用，可执行 `KNOWLEDGE_PUBLIC_PORT=18765 docker compose up -d --no-build`，随后访问 `http://127.0.0.1:18765`。该变量同时配置端口映射和 Host 校验，不会开放其他主机名。
 
 也可使用 Python 3.11+：
 
