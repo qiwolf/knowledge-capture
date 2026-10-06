@@ -29,6 +29,7 @@ PROMPT = '''识别引擎原始响应中的搜索结果或文章/已返回的视�
 只输出以下JSON结构，不增加字段：
 {"classification":"search|article|video_text|captcha|login|error|queued|unknown", "title":null或{"unit_id":"u1","start":0,"end":5}, "body":[同样的字符区间], "results":[{"title":字符区间,"url_id":"l1","description":null或字符区间}], "images":["l2"]}
 字符区间使用Python Unicode字符下标，start包含、end不包含，必须在同一个unit内。
+每个unit提供char_count；选择完整unit时使用start=0、end=char_count，不要估算全文长度。
 URL只能用links中现有ID。图片只选role为image的候选；正文按阅读顺序选择，排除导航、广告、Cookie、页脚等噪声。
 若是验证码/登录/错误/排队/无正文，准确分类，不把状态提示作为文章。
 视频只能选择已提供的字幕/转写文本，不能推测未返回的语音或画面。搜索每条需真实标题与链接；可无description。
@@ -249,7 +250,7 @@ class EngineContentNormalizer:
             for offset in range(0,len(value),4000):
                 fragment = value[offset:offset+4000]
                 if fragment.strip():
-                    units.append({'id': 'u'+str(len(units)+1), 'text': fragment, 'locator': {**locator,'text_offset':offset}})
+                    units.append({'id': 'u'+str(len(units)+1), 'text': fragment, 'char_count': len(fragment), 'locator': {**locator,'text_offset':offset}})
             # Parse Markdown destinations before bare URLs so closing delimiters
             # never become URL bytes and extensionless images retain their role.
             destinations = []
